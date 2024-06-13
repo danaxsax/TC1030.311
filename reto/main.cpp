@@ -1,7 +1,11 @@
 #include <iostream>
 #include <vector>
+#include "VideoManager.h"
 #include "Movie.h"
 #include "Serie.h"
+#include "Episode.h"
+
+using namespace std;
 
 // Function to input movie details from user
 Movie inputMovieDetails() {
@@ -58,7 +62,7 @@ Series inputSeriesDetails() {
 }
 
 int main() {
-    vector<Video*> videos; // Vector to store pointers to Video objects (polymorphic)
+    VideoManager manager;
 
     // Input movies
     int numMovies;
@@ -81,7 +85,7 @@ int main() {
         }
 
         movie.addRating(movie.getAverageRating());
-        videos.push_back(new Movie(movie)); // Store pointer to Movie object in vector
+        manager.addVideo(new Movie(movie)); // Store pointer to Movie object in VideoManager
     }
 
     // Input series
@@ -121,19 +125,15 @@ int main() {
             series.addEpisode(episode);
         }
 
-        videos.push_back(new Series(series)); // Store pointer to Series object in vector
+        manager.addVideo(new Series(series)); // Store pointer to Series object in VideoManager
     }
 
-    // Display data for all videos
-    for (Video* video : videos) {
-        video->getData(); // Polymorphic call to getData() for each video
-        std::cout << std::endl;
-    }
+    // Display menu for user interaction
+    manager.displayMenu();
 
-    // Clean up allocated memory
-    for (Video* video : videos) {
-        delete video;
-    }
+    // Clean up dynamically allocated memory
+    // Since VideoManager owns the videos, we'll add a destructor to VideoManager for cleanup
+    // (Implemented below in VideoManager.cpp)
 
     return 0;
 }
