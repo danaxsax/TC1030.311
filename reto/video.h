@@ -7,51 +7,40 @@ using namespace std;
 class Video{
     public:
         //constructor
-        Video(int id, std::string name, int duration, std::string genre, int ranked, float rentCost, float saleCost, int score);
-
+        Video(int id, string name, int duration, string genre, float rentCost, float saleCost, float rating = 0.0);
+        virtual ~Video(); 
 
         //setters
-        void setid(int id){this->id = id;}
-        void setname(string name){this->name = name;}
-        void setduration(int duration){this->duration = duration;}
-        void setgenre(string genre){this->genre = genre;}
-        void setranked(int ranked){this->ranked = ranked;}
-        void setrentCost(float rentCost){this->rentCost = rentCost;}
-        void setsaleCost(float saleCost){this->saleCost = saleCost;}
-        void setscore(int score){this->score = score;}
+        void setId(int id);
+        void setName(string name);
+        void setDuration(int duration);
+        void setGenre(string genre);
+        void setRentCost(float rentCost);
+        void setSaleCost(float saleCost);
+        void setRating(float rating); // Optional
 
         //getters
-        int getid(){return id;}
-        string getname(){return name;} 
-        int getduration(){return duration;}
-        string getgenre(){return genre;}
-        int getranked(){return ranked;}
-        float getrentCost(){return rentCost;}
-        float getsaleCost(){return saleCost;}
-        int getscore(){return score;}
+        int getId() const;
+        string getName() const;
+        int getDuration() const;
+        string getGenre() const;
+        float getRentCost() const;
+        float getSaleCost() const;
+        float getGrade() const;
+        float getRating() const; 
 
         //display data
-        virtual void getdata() const{
-            cout<<"ID: "<<id<<endl;
-            cout<<"Nombre: "<<name<<endl;
-            cout<<"Duracion: "<<duration<<endl;
-            cout<<"Genero: "<<genre<<endl;
-            cout<<"Ranking: "<<ranked<<endl;
-            cout<<"Costo de renta: "<<rentCost<<endl;
-            cout<<"Costo de venta: "<<saleCost<<endl;
-            cout<<"Calificacion: "<<score<<endl;
-            }
-        virtual ~Video() {}
-
+        virtual float getAverageRating();
+        virtual void getData() const;
+        
     private:
         int id;
         string name;
         int duration;
         string genre;
-        int ranked;
         float rentCost;
         float saleCost;
-        int score;
+        float rating;
 };
 
 #endif // VIDEO_H

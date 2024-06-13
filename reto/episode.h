@@ -3,25 +3,25 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Episode {
 public:
-    Episode(const string& title, int season, int score)
-        : title(title), season(season), score(score) {}
+    Episode(std::string _title, int _season);
 
-    void display() const {
-        cout << "  Episode: " << title << ", Season: " << season << ", Score: " << score << endl;
-    }
+    std::string getTitle() const;
+    int getSeason() const;
 
-    int getScore() const {
-        return score;
-    }
+    void addRating(int rating);
+
+    float getAverageRating() const;
+    void getData() const;
 
 private:
-    string title;
+    std::string title;
     int season;
-    int score;
+    std::vector<int> ratings; // Correct the type to vector
 };
 
 #endif // EPISODE_H

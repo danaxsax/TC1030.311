@@ -1,37 +1,24 @@
 #ifndef SERIE_H
 #define SERIE_H
-#include "video.h"
-#include "episode.h"
+#include "Video.h"
+#include "Episode.h"
 #include <vector>
+#include <string>
+
 using namespace std;
 
-class Serie: public Video{
+class Series : public Video {
 public:
-    Serie(int id, string name, int duration, string genre, int ranked, float rentCost, float saleCost, int score)
-        : Video(id, name, duration, genre, ranked, rentCost, saleCost, score) {}
+    Series(int _id, std::string _name, int _duration, std::string _genre, float _rentCost, float _saleCost);
 
-    void addEpisode(const Episode& episode){
-        episodes.push_back(episode);
-    }
+    const std::vector<Episode>& getEpisodes() const;
 
-    // Setters
-    void display() const {
-        cout << "Serie - ";
-        display();
-        for (const auto& episode : episodes){
-            episode.display();
-        }
-    }
+    void addEpisode(const Episode& episode);
 
-    float getAverageScore() const {
-        float sum = 0;
-        for (const auto& episode : episodes){
-            sum += episode.getScore();
-        }
-        return episodes.empty() ? 0 : sum / episodes.size();
-    }
+    float getAverageRating() override;
+    void getData() ;
 
 private:
-    vector<Episode> episodes;
+    std::vector<Episode> episodes;
 };
 #endif // SERIE_H
