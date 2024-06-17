@@ -1,0 +1,19 @@
+Crear un programa en C++, con programación orientada a objetos. Se tiene la clase Alumno y la clase Materia, con los atributos y métodos asignados a cada una de las clases mencionadas.
+
+Crear un programa que realice lo siguiente:
+
+1.Crear la clase Alumno
+2. Crear la clase Materia
+3. Crear el siguiente menú:
+4. Alta de Alumno con su materia y cuatro calificaciones
+5. Calcular el promedio por alumno
+6. Consultar alumno con materia y promedio
+
+Ejemplo
+
+idAlumno  nombre  idcalificacion  nombre materia  calificacion 1  calificacion 2  calificacion 3  calificacion 4
+_________________________________________________________________________________________________________________
+101        gaby         1          matematicas          100             90              90              40
+102        Pepe         1          matematicas          100             90              100             80
+103        Jose         2           historia            50              100             100             90
+104        Omar         2           historia            90              90              90              90
